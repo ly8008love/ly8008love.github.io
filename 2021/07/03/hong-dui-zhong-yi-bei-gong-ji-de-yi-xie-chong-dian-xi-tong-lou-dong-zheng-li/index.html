@@ -1,0 +1,1597 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="红队中易被攻击的一些重点系统漏洞整理, __画船听雨__">
+    <meta name="description" content="每一个不曾起舞的日子，都是对生命的辜负">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>红队中易被攻击的一些重点系统漏洞整理 | __画船听雨__</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="__画船听雨__" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">__画船听雨__</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <span>关于我</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/plan">
+          
+          <span>学习计划</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>contact</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">__画船听雨__</div>
+        <div class="logo-desc">
+            
+            每一个不曾起舞的日子，都是对生命的辜负
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/about " style="margin-left:75px">
+				  
+		          <span>关于我</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/plan " style="margin-left:75px">
+				  
+		          <span>学习计划</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			contact
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">红队中易被攻击的一些重点系统漏洞整理</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E8%B5%84%E6%96%99%E6%94%B6%E9%9B%86/">
+                                <span class="chip bg-color">资料收集</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%BA%A2%E9%98%9F/" class="post-category">
+                                红队
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-07-03
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2021-07-03
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    1.9k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    8 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="红队中易被攻击的一些重点系统漏洞整理"><a href="#红队中易被攻击的一些重点系统漏洞整理" class="headerlink" title="红队中易被攻击的一些重点系统漏洞整理"></a>红队中易被攻击的一些重点系统漏洞整理</h1><p>以下时间为更新时间，不代表漏洞发现时间.带 ⚒️图标的为工具URL.</p>
+<p>配合EHole(棱洞)-红队重点攻击系统指纹探测工具使用效果更佳：<a target="_blank" rel="noopener" href="https://github.com/EdgeSecurityTeam/EHole">https://github.com/EdgeSecurityTeam/EHole</a></p>
+<p>此项目同步至：<a target="_blank" rel="noopener" href="https://forum.ywhack.com/bountytips.php?Vulnerability">https://forum.ywhack.com/bountytips.php?Vulnerability</a></p>
+<h2 id="一、OA系统"><a href="#一、OA系统" class="headerlink" title="一、OA系统"></a>一、OA系统</h2><blockquote>
+<p>泛微(Weaver-Ecology-OA)</p>
+</blockquote>
+<ul>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/6560">泛微OA E-cology RCE(CNVD-2019-32204)</a> - 影响版本7.0/8.0/8.1/9.0</li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/86082614">泛微OA WorkflowCenterTreeData接口注入(限oracle数据库)</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://www.cnblogs.com/whoami101/p/13361254.html">泛微ecology OA数据库配置信息泄露</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://www.cnblogs.com/yuzly/p/13677238.html">泛微OA云桥任意文件读取</a> - 影响2018-2019 多个版本</li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://www.cnblogs.com/ffx1/p/12653555.html">泛微 e-cology OA 前台SQL注入漏洞</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://www.seebug.org/vuldb/ssvid-91089">泛微OA系统 com.eweaver.base.security.servlet.LoginAction 参数keywordid SQL注入漏洞</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://www.cnblogs.com/whoami101/p/13361254.html">泛微 OA sysinterface/codeEdit.jsp 页面任意文件上传</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://www.seebug.org/vuldb/ssvid-90524">泛微ecology OA数据库配置信息泄露</a></li>
+</ul>
+<blockquote>
+<p>致远(Seeyon)</p>
+</blockquote>
+<ul>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://www.cnblogs.com/nul1/p/12803555.html">致远 OA A8 htmlofficeservlet getshell 漏洞</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://www.zhihuifly.com/t/topic/3345">致远OA Session泄漏漏洞</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://www.cnblogs.com/AtesetEnginner/p/12106741.html">致远OA A6 search_result.jsp sql注入漏洞</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://www.cnblogs.com/AtesetEnginner/p/12106741.html">致远OA A6 setextno.jsp sql注入漏洞</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://www.cnblogs.com/AtesetEnginner/p/12106741.html">致远OA A6 重置数据库账号密码漏洞</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://www.cnblogs.com/AtesetEnginner/p/12106741.html">致远OA A8 未授权访问</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="http://wy.zone.ci/bug_detail.php?wybug_id=wooyun-2015-0104942">致远OA A8-v5 任意用户密码修改</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://www.cnblogs.com/AtesetEnginner/p/12106741.html">致远OA A8-m 后台万能密码</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://landgrey.me/blog/8/">致远OA 帆软报表组件 前台XXE漏洞</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://landgrey.me/blog/7/">致远OA帆软报表组件反射型XSS&amp;SSRF漏洞</a> - Thanks:@LandGrey</li>
+</ul>
+<blockquote>
+<p>蓝凌OA</p>
+</blockquote>
+<ul>
+<li>[2021.01.07] - 暂无(希望大佬能提供) </li>
+</ul>
+<blockquote>
+<p>通达OA(TongDa OA)</p>
+</blockquote>
+<ul>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/8430">通达OA任意文件删除&amp;文件上传RCE分析(2020年hw 8月0day)</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/7437">通达OA任意文件上传/文件包含GetShell</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="http://www.adminxe.com/1095.html">通达OA &lt;11.5版本 任意用户登录</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://www.cnblogs.com/yuzly/p/13606314.html">通达OA 11.2后台getshell</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://www.cnblogs.com/yuzly/p/13690737.html">通达OA 11.7 后台sql注入getshell漏洞</a></li>
+<li>[2021.03.06] - <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/LJRI04VViL4hbt6dbmGHAw">通达OA 11.7 未授权RCE</a></li>
+<li>[2021.03.09] - <a target="_blank" rel="noopener" href="https://paper.seebug.org/1499/">通达OA 11.8 后台低权限Getshell</a></li>
+<li>[2021.03.07] - ⚒️<a target="_blank" rel="noopener" href="https://github.com/xinyu2428/TDOA_RCE">TDOA_RCE 通达OA综合利用工具</a></li>
+</ul>
+<blockquote>
+<p>金蝶OA(Kingdee OA)</p>
+</blockquote>
+<ul>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://www.seebug.org/vuldb/ssvid-93826">金蝶协同办公系统 GETSHELL漏洞</a></li>
+</ul>
+<h2 id="二、E-mail"><a href="#二、E-mail" class="headerlink" title="二、E-mail"></a>二、E-mail</h2><blockquote>
+<p>Exchange</p>
+</blockquote>
+<ul>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://srcincite.io/advisories/src-2020-0025/">CVE-2020-17083 Microsoft Exchange Server 远程执行代码漏洞</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://github.com/rapid7/metasploit-framework/pull/14126">Microsoft Exchange远程代码执行漏洞（CVE-2020-16875）</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/7321">CVE-2020-0688_微软EXCHANGE服务的远程代码执行漏洞</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/3670">Microsoft Exchange任意用户伪造漏洞</a></li>
+<li>[2021.03.08] - ⚒️<a target="_blank" rel="noopener" href="https://github.com/GreyOrder/CVE-2021-26855">Microsoft Exchange SSRF（CVE-2021-26855）</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://sploitus.com/?query=Exchange#exploits">Exchange 历史漏洞合集</a></li>
+<li>[2021.03.10] - <a target="_blank" rel="noopener" href="https://www.praetorian.com/blog/reproducing-proxylogon-exploit/">Microsoft Exchange Proxylogon漏洞利用链</a></li>
+</ul>
+<blockquote>
+<p>Coremail</p>
+</blockquote>
+<ul>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://www.lsablog.com/networksec/penetration/coremail-info-leakage-and-webservice-unauthorization-reproduce/">Coremail 配置信息泄露及接口未授权漏洞</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://www.seebug.org/vuldb/ssvid-94754">Coremail 存储型XSS漏洞</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://sploitus.com/?query=Coremail#exploits">Coremail 历史漏洞合集</a></li>
+</ul>
+<h2 id="三、Web中间件"><a href="#三、Web中间件" class="headerlink" title="三、Web中间件"></a>三、Web中间件</h2><blockquote>
+<p>Apache</p>
+</blockquote>
+<ul>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/4422">Apache Solr RCE—【CVE-2019-0192】</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/4452">CVE-2018-1335：Apache Tika 命令注入</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/5513">Apache Axis1（&lt;=1.4版本） RCE</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/54">Tomcat信息泄漏和远程代码执行漏洞【CVE-2017-12615/CVE-2017-12616】</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/7683">Tomcat Ghostcat - AJP协议文件读取/文件包含漏洞</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://github.com/pyn3rd/CVE-2019-0232">Tomcat全版本命令执行漏洞 CVE-2019-0232</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43071873/article/details/109532160">Tomcat后台部署war木马getshell</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://blog.csdn.net/jlvsjp/article/details/52776377">CVE-2016-1240 Tomcat本地提权漏洞</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://sploitus.com/?query=tomcat#exploits">Tomcat历史漏洞合集</a></li>
+</ul>
+<blockquote>
+<p>Weblogic</p>
+</blockquote>
+<ul>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://github.com/jas502n/CVE-2020-14882">CVE-2020-14882 Weblogic 未授权绕过RCE</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/5024">Weblogic 远程命令执行漏洞分析(CVE-2019-2725)</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://www.cnblogs.com/lijingrong/p/13049569.html">CVE-2019-2618任意文件上传漏洞</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiaozi/p/8205107.html">WebLogic XMLDecoder反序列化漏洞（CVE-2017-10271）</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/5078">Weblogic任意文件读取漏洞（CVE-2019-2615)与文件上传漏洞（CVE-2019-2618）</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/8155">Weblogic coherence组件iiop反序列化漏洞 (CVE-2020-14644)</a></li>
+<li>[2021.03.07] - <a target="_blank" rel="noopener" href="https://github.com/Y4er/CVE-2020-14756">WebLogic CVE-2020-14756 T3/IIOP 反序列化RCE</a></li>
+<li>[2021.03.07] - <a target="_blank" rel="noopener" href="https://forum.ywhack.com/viewthread.php?tid=115007">Weblogic Server远程代码执行漏洞(CVE-2021-2109)</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://sploitus.com/?query=weblogic#exploits">Weblogic历史漏洞合集</a></li>
+<li>[2021.03.09] - ⚒️<a target="_blank" rel="noopener" href="https://github.com/rabbitmask/WeblogicScan">WeblogicScan Weblogic一键漏洞检测工具</a></li>
+</ul>
+<blockquote>
+<p>JBoss</p>
+</blockquote>
+<ul>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://www.cnblogs.com/null1433/p/12704908.html">CVE-2017-7504-JBoss JMXInvokerServlet 反序列化</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://www.cnblogs.com/kuaile1314/p/12060366.html">JBoss 5.x/6.x 反序列化漏洞（CVE-2017-12149）</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://www.cnblogs.com/iamver/p/11282928.html">JBoss 4.x JBossMQ JMS 反序列化漏洞（CVE-2017-7504）</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://www.cnblogs.com/Safe3/archive/2010/01/08/1642371.html">JBOSS远程代码执行漏洞</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://www.cnblogs.com/rnss/p/13377321.html">JBoss JMX Console未授权访问Getshell</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://sploitus.com/?query=JBoss#exploits">JBoss历史漏洞合集</a></li>
+<li>[2021.03.10] - ⚒️<a target="_blank" rel="noopener" href="https://github.com/GGyao/jbossScan">JbossScan 一个简单探测jboss漏洞的工具</a></li>
+</ul>
+<h2 id="四、源代码管理"><a href="#四、源代码管理" class="headerlink" title="四、源代码管理"></a>四、源代码管理</h2><blockquote>
+<p>GitLab</p>
+</blockquote>
+<ul>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://github.com/thewhiteh4t/cve-2020-10977">GitLab任意文件读取漏洞 CVE-2020-10977</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/2661">GitLab 远程代码执行漏洞 -【CVE-2018-14364】</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/393">GitLab 任意文件读取 (CVE-2016-9086) 和任意用户token泄露漏洞</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://sploitus.com/?query=Gitlab#exploits">GitLab历史漏洞合集</a></li>
+</ul>
+<blockquote>
+<p>SVN</p>
+</blockquote>
+<ul>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36869808/article/details/88846945">SVN源码泄露漏洞</a></li>
+<li>[2021.03.09] - ⚒️<a target="_blank" rel="noopener" href="https://github.com/admintony/svnExploit">svnExploit 支持SVN源代码泄露全版本Dump源码</a></li>
+</ul>
+<h2 id="五、项目管理系统"><a href="#五、项目管理系统" class="headerlink" title="五、项目管理系统"></a>五、项目管理系统</h2><blockquote>
+<p>禅道</p>
+</blockquote>
+<ul>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://www.4hou.com/posts/VoOW">【组件攻击链】禅道项目管理系统(ZenTaoPMS)高危漏洞分析与利用</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36197704/article/details/109385695">CNVD-C-2020-121325 禅道开源版文件上传漏洞</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/171/">禅道9.1.2 免登陆SQL注入漏洞</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://www.cnblogs.com/ly584521/p/13962816.html">禅道 ≤ 12.4.2 后台管理员权限Getshell</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/186">禅道9.1.2 权限控制逻辑漏洞</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/188">禅道826版本一定条件getshell</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://anquan.baidu.com/article/996">禅道远程代码执行漏洞</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://wiki.bylibrary.cn/01-CMS%E6%BC%8F%E6%B4%9E/%E7%A6%85%E9%81%93/%E7%A6%85%E9%81%9311.6%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96/">禅道11.6任意文件读取</a></li>
+</ul>
+<blockquote>
+<p>Jira</p>
+</blockquote>
+<ul>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://caiqiqi.github.io/2019/11/03/Atlassian-Jira%E6%BC%8F%E6%B4%9E%E5%A4%A7%E6%9D%82%E7%83%A9/">Atlassian Jira漏洞大杂烩</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1529135">Jira服务工作台路径遍历导致的敏感信息泄露漏洞（CVE-2019-14994）</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://www.cnblogs.com/backlion/p/11608371.html">Jira未授权SSRF漏洞(CVE-2019-8451)</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://www.cnblogs.com/backlion/p/11608439.html">Atlassian JIRA服务器模板注入漏洞（CVE-2019-11581）</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/7219">CVE-2019-8449 JIRA 信息泄漏漏洞</a></li>
+<li>[2021.01.07] - ⚒️<a target="_blank" rel="noopener" href="https://twitter.com/harshbothra_/status/1346109605756116995">遇到Jira时可以尝试的一些CVE</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://sploitus.com/?query=Jira#exploits">Jira历史漏洞合集</a></li>
+</ul>
+<h2 id="六、数据库"><a href="#六、数据库" class="headerlink" title="六、数据库"></a>六、数据库</h2><ul>
+<li>[2021.03.09] - ⚒️<a target="_blank" rel="noopener" href="https://github.com/SafeGroceryStore/MDAT">MDAT 多种主流的数据库攻击利用工具</a></li>
+</ul>
+<blockquote>
+<p>Redis</p>
+</blockquote>
+<ul>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/256">Redis未授权访问漏洞利用总结</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/5616">Redis 4.x RCE</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://www.webshell.cc/5154.html">redis利用姿势收集</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://sploitus.com/?query=redis#exploits">Redis历史漏洞合集</a></li>
+<li>[2021.03.08] - ⚒️<a target="_blank" rel="noopener" href="https://github.com/r35tart/RedisWriteFile">通过 Redis 主从写出无损文件</a></li>
+</ul>
+<blockquote>
+<p>Mysql</p>
+</blockquote>
+<ul>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/1122">Mysql提权(CVE-2016-6663、CVE-2016-6664组合实践)</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://blog.csdn.net/itfly8/article/details/100890881">Mysql数据库渗透及漏洞利用总结</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://www.cnblogs.com/ichunqiu/p/9604564.html">Mysql 注入专辑</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/2199">高版本MySQL之UDF提权</a></li>
+<li>[2021.03.08] - <a target="_blank" rel="noopener" href="https://sploitus.com/?query=mysql#exploits">Mysql历史漏洞合集</a></li>
+</ul>
+<blockquote>
+<p>Mssql</p>
+</blockquote>
+<ul>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://forum.ywhack.com/thread-114737-1-1.html">Mssql利用姿势整理(整理的比较全)</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/7534">Mssql数据库命令执行总结</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/8195">利用mssql模拟登录提权</a></li>
+<li>[2021.01.07] - <a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/8513">高级的MSSQL注入技巧</a></li>
+<li>[2021.03.08] - <a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/6682">MSSQL使用CLR程序集来执行命令</a></li>
+</ul>
+<h2 id="七、开源运维监控"><a href="#七、开源运维监控" class="headerlink" title="七、开源运维监控"></a>七、开源运维监控</h2><blockquote>
+<p>Jenkins</p>
+</blockquote>
+<ul>
+<li>[2021.03.10] -  <a target="_blank" rel="noopener" href="https://blog.csdn.net/caiqiiqi/article/details/96431428">Jenkins 路径遍历任意文件写入漏洞（CVE-2019-10352）</a></li>
+<li>[2021.03.10] -  <a target="_blank" rel="noopener" href="https://www.cnblogs.com/paperpen/p/11626231.html">Jenkins Git client插件命令执行漏洞(CVE-2019-10392)</a></li>
+<li>[2021.03.10] -  <a target="_blank" rel="noopener" href="https://sploitus.com/?query=Jenkins#exploits">Jenkins 历史漏洞利用程序</a></li>
+</ul>
+<blockquote>
+<p>Zabbix</p>
+</blockquote>
+<ul>
+<li>[2021.03.10] -  <a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/8991">CVE-2020-11800 Zabbix 远程代码执行漏洞</a></li>
+<li>[2021.03.10] -  <a target="_blank" rel="noopener" href="https://www.horizon3.ai/disclosures/zabbix-csrf-to-rce">Zabbix 中的CSRF到RCE（CVE-2021-27927）</a></li>
+<li>[2021.03.10] -  <a target="_blank" rel="noopener" href="https://www.exploit-db.com/exploits/39937">Zabbix 2.2 - 3.0.3 远程代码执行漏洞</a></li>
+<li>[2021.03.10] -  <a target="_blank" rel="noopener" href="https://www.seebug.org/vuldb/ssvid-92245">Zabbix Agent 3.0.1 mysql.size shell命令注入 (CVE-2016-4338)</a></li>
+<li>[2021.03.10] -  <a target="_blank" rel="noopener" href="https://sploitus.com/?query=Zabbix#exploits">Zabbix 历史漏洞利用程序</a></li>
+</ul>
+<blockquote>
+<p>Nagios</p>
+</blockquote>
+<ul>
+<li>[2021.03.10] -  <a target="_blank" rel="noopener" href="https://code610.blogspot.com/2019/12/postauth-rce-in-latest-nagiosxi.html">Nagios XI 5.6.9 远程代码执行漏洞（CVE-2019-20197）</a></li>
+<li>[2021.03.10] -  <a target="_blank" rel="noopener" href="https://github.com/fs0c-sh/nagios-xi-5.7.5-bugs">nagios-xi-5.7.5 多个漏洞（CVE-2021-25296~99）</a></li>
+<li>[2021.03.10] -  <a target="_blank" rel="noopener" href="https://gist.github.com/leommxj/93edce6f8572cefe79a3d7da4389374e">Nagios 代码注入漏洞 (CVE-2021-3273)</a></li>
+<li>[2021.03.10] -  <a target="_blank" rel="noopener" href="https://www.shielder.it/blog/2019/04/nagios-xi-5.5.10-xss-to-/">Nagios XI 5.5.10: XSS to RCE</a></li>
+<li>[2021.03.10] -  <a target="_blank" rel="noopener" href="https://sploitus.com/?query=Nagios#exploits">Nagios 历史漏洞利用程序</a></li>
+</ul>
+<h2 id="八、堡垒机"><a href="#八、堡垒机" class="headerlink" title="八、堡垒机"></a>八、堡垒机</h2><blockquote>
+<p>JumpServer</p>
+</blockquote>
+<ul>
+<li>[2021.03.10] -  <a target="_blank" rel="noopener" href="https://www.o2oxy.cn/2921.html">JumpServer远程执行漏洞(2021.01)</a></li>
+</ul>
+<blockquote>
+<p>齐治堡垒机</p>
+</blockquote>
+<ul>
+<li>[2021.03.10] -  <a target="_blank" rel="noopener" href="https://www.seebug.org/vuldb/ssvid-98383">齐治堡垒机未授权RCE</a></li>
+<li>[2021.03.10] -  <a target="_blank" rel="noopener" href="https://forum.ywhack.com/viewthread.php?tid=1523">齐治堡垒机远程代码执行</a></li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">flow</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://ly8008love.github.io/2021/07/03/hong-dui-zhong-yi-bei-gong-ji-de-yi-xie-chong-dian-xi-tong-lou-dong-zheng-li/">https://ly8008love.github.io/2021/07/03/hong-dui-zhong-yi-bei-gong-ji-de-yi-xie-chong-dian-xi-tong-lou-dong-zheng-li/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">flow</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E8%B5%84%E6%96%99%E6%94%B6%E9%9B%86/">
+                                    <span class="chip bg-color">资料收集</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: '3EjhT8pWgClT1kVsDDtXPhwk-gzGzoHsz',
+        appKey: '7aFxoHFzNfLJ4nBH82KEG4SN',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '1678244006'
+    });
+</script>
+
+<!--酷Q推送-->
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2021/07/04/pymysql-de-xue-xi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="pymysql的学习">
+                        
+                        <span class="card-title">pymysql的学习</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-07-04
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%B5%84%E6%96%99%E6%94%B6%E9%9B%86/">
+                        <span class="chip bg-color">资料收集</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/07/02/1-1-sql-ji-ben-yu-ju/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="1.1 SQL基本语句">
+                        
+                        <span class="card-title">1.1 SQL基本语句</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-02
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/web%E5%89%8D%E7%AB%AF%E6%B5%8B%E8%AF%95/" class="post-category">
+                                    web前端测试
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/SQL%E6%B3%A8%E5%85%A5/">
+                        <span class="chip bg-color">SQL注入</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFunction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021</span>
+            
+            <span id="year">2021</span>
+            <a href="/about" target="_blank">flow</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">9.7k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+                <span id="sitetime"> Loading ...</span>
+                <script>
+                    var calcSiteTime = function () {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2021";
+                        var startMonth = "7";
+                        var startDate = "3";
+                        var startHour = "0";
+                        var startMinute = "0";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                        // 区分是否有年份.
+                        var language = 'zh-CN';
+                        if (startYear === String(todayYear)) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            var daysTip = 'This site has been running for ' + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                daysTip = '本站已运行 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                daysTip = '本站已運行 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = daysTip;
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                        }
+                    }
+
+                    calcSiteTime();
+                </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
