@@ -6,7 +6,7 @@
   <link href="https://ly8008love.github.io/atom.xml" rel="self"/>
   
   <link href="https://ly8008love.github.io/"/>
-  <updated>2021-07-12T10:11:13.352Z</updated>
+  <updated>2021-07-08T02:45:16.674Z</updated>
   <id>https://ly8008love.github.io/</id>
   
   <author>
@@ -15,82 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>2.md</title>
-    <link href="https://ly8008love.github.io/2021/07/12/2-md/"/>
-    <id>https://ly8008love.github.io/2021/07/12/2-md/</id>
-    <published>2021-07-12T08:32:00.000Z</published>
-    <updated>2021-07-12T10:11:13.352Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;14141&quot;&gt;&lt;a href=&quot;#14141&quot; class=&quot;headerlink&quot; title=&quot;14141&quot;&gt;&lt;/a&gt;14141&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/../../images/2-md/image-20210712164242489.png&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="test" scheme="https://ly8008love.github.io/categories/test/"/>
-    
-    
-    <category term="test" scheme="https://ly8008love.github.io/tags/test/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>test</title>
-    <link href="https://ly8008love.github.io/2021/07/12/test/"/>
-    <id>https://ly8008love.github.io/2021/07/12/test/</id>
-    <published>2021-07-12T03:27:27.000Z</published>
-    <updated>2021-07-12T08:31:37.195Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;test&quot;&gt;&lt;a href=&quot;#test&quot; class=&quot;headerlink&quot; title=&quot;test&quot;&gt;&lt;/a&gt;test&lt;/h2&gt;&lt;p&gt;123141&lt;/p&gt;
-&lt;p&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="test" scheme="https://ly8008love.github.io/categories/test/"/>
-    
-    
-    <category term="test" scheme="https://ly8008love.github.io/tags/test/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>burp插件使用-xssValidator</title>
-    <link href="https://ly8008love.github.io/2021/07/11/burp-cha-jian-shi-yong-xssvalidator/"/>
-    <id>https://ly8008love.github.io/2021/07/11/burp-cha-jian-shi-yong-xssvalidator/</id>
-    <published>2021-07-11T15:27:37.000Z</published>
-    <updated>2021-07-11T15:59:08.429Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;XSS-Validator&quot;&gt;&lt;a href=&quot;#XSS-Validator&quot; class=&quot;headerlink&quot; title=&quot;XSS Validator&quot;&gt;&lt;/a&gt;XSS Validator&lt;/h1&gt;&lt;h2 id=&quot;安装必备环境&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="工具使用" scheme="https://ly8008love.github.io/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"/>
-    
-    
-    <category term="burp插件" scheme="https://ly8008love.github.io/tags/burp%E6%8F%92%E4%BB%B6/"/>
-    
-  </entry>
   
   <entry>
     <title>nmap脚本合集</title>
@@ -177,31 +101,6 @@
     
     
     <category term="资料收集" scheme="https://ly8008love.github.io/tags/%E8%B5%84%E6%96%99%E6%94%B6%E9%9B%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>1.1 SQL基本语句</title>
-    <link href="https://ly8008love.github.io/2021/07/02/1-1-sql-ji-ben-yu-ju/"/>
-    <id>https://ly8008love.github.io/2021/07/02/1-1-sql-ji-ben-yu-ju/</id>
-    <published>2021-07-02T15:46:50.000Z</published>
-    <updated>2021-07-03T10:17:17.370Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;0x00-简介&quot;&gt;&lt;a href=&quot;#0x00-简介&quot; class=&quot;headerlink&quot; title=&quot;0x00 简介&quot;&gt;&lt;/a&gt;0x00</summary>
-        
-      
-    
-    
-    
-    <category term="web前端测试" scheme="https://ly8008love.github.io/categories/web%E5%89%8D%E7%AB%AF%E6%B5%8B%E8%AF%95/"/>
-    
-    
-    <category term="SQL注入" scheme="https://ly8008love.github.io/tags/SQL%E6%B3%A8%E5%85%A5/"/>
     
   </entry>
   
