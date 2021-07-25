@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="1.1 SQL基本语句, __画船听雨__">
+    <meta name="keywords" content="burp插件使用-xssValidator, __画船听雨__">
     <meta name="description" content="每一个不曾起舞的日子，都是对生命的辜负">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>1.1 SQL基本语句 | __画船听雨__</title>
+    <title>burp插件使用-xssValidator | __画船听雨__</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -251,12 +251,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">1.1 SQL基本语句</h1>
+                    <h1 class="description center-align post-title">burp插件使用-xssValidator</h1>
                 </div>
             </div>
         </div>
@@ -372,8 +372,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/SQL%E6%B3%A8%E5%85%A5/">
-                                <span class="chip bg-color">SQL注入</span>
+                            <a href="/tags/burp%E6%8F%92%E4%BB%B6/">
+                                <span class="chip bg-color">burp插件</span>
                             </a>
                         
                     </div>
@@ -384,8 +384,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/web%E5%89%8D%E7%AB%AF%E6%B5%8B%E8%AF%95/" class="post-category">
-                                web前端测试
+                            <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="post-category">
+                                工具使用
                             </a>
                         
                     </div>
@@ -397,21 +397,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-07-02
+                    2021-07-11
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-07-03
+                    2021-07-11
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    289
+                    146
                 </div>
                 
 
@@ -441,69 +441,35 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="0x00-简介"><a href="#0x00-简介" class="headerlink" title="0x00 简介"></a>0x00 简介</h1><p>本文讲解MySQL的数据库建立和简单的操作,为后期做准备，语法大写看起来不是很舒服能用小写的我就尽量小写了<br>建议还是先看看mysql语法吧，我这里也是粗略的讲讲 ，如果你懂点英语,那么看起来其实也不费劲。</p>
-<h1 id="0x01-基本语法"><a href="#0x01-基本语法" class="headerlink" title="0x01 基本语法"></a>0x01 基本语法</h1><p>建立数据库</p>
-<pre class="line-numbers language-none"><code class="language-none">mysql&gt; create database mysqltest;
-Query OK, 1 row affected (0.00 sec)
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<p>查询所有数据库</p>
-<pre class="line-numbers language-none"><code class="language-none">mysql&gt; show databases;
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| mysql              |
-| mysqltest          |
-| performance_schema |
-+--------------------+
-4 rows in set (0.00 sec)
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>使用数据库 新建一个表 </p>
-<pre class="line-numbers language-none"><code class="language-none">mysql&gt; use mysqltest
-Database changed
-mysql&gt; create table admin (id int,username varchar(255),password varchar(255));
-Query OK, 0 rows affected (0.09 sec)
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<p>查看数据库，插入，与查询</p>
-<pre class="line-numbers language-none"><code class="language-none">mysql&gt; show tables;
-+---------------------+
-| Tables_in_mysqltest |
-+---------------------+
-| admin               |
-+---------------------+
-1 row in set (0.00 sec)
-
-mysql&gt; insert into admin (id,username,password) values (1,&quot;admin&quot;,&quot;admin&quot;);
-Query OK, 1 row affected (0.00 sec)
-
-mysql&gt; select * from admin;
-+------+----------+----------+
-| id   | username | password |
-+------+----------+----------+
-|    1 | admin    | admin    |
-+------+----------+----------+
-1 row in set (0.00 sec)
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<p>查询 where 语句</p>
-<pre class="line-numbers language-none"><code class="language-none">mysql&gt; select * from admin where id &#x3D;1;
-+------+----------+----------+
-| id   | username | password |
-+------+----------+----------+
-|    1 | admin    | admin    |
-+------+----------+----------+
-1 row in set (0.00 sec)
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<h1 id="0x02-文末"><a href="#0x02-文末" class="headerlink" title="0x02 文末"></a>0x02 文末</h1><p>本文很简单 意在构造一个表 为后面提供一个注入点</p>
+                <h1 id="XSS-Validator"><a href="#XSS-Validator" class="headerlink" title="XSS Validator"></a>XSS Validator</h1><h2 id="安装必备环境"><a href="#安装必备环境" class="headerlink" title="安装必备环境"></a>安装必备环境</h2><h3 id="Phantomjs"><a href="#Phantomjs" class="headerlink" title="Phantomjs"></a>Phantomjs</h3><blockquote>
+<p><a target="_blank" rel="noopener" href="http://phantomjs.org/download.html">http://phantomjs.org/download.html</a></p>
+</blockquote>
+<h3 id="xss-js"><a href="#xss-js" class="headerlink" title="xss.js"></a>xss.js</h3><blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/nVisium/xssValidator">https://github.com/nVisium/xssValidator</a></p>
+</blockquote>
+<p>下载完成后，将xss.js放在phantomjs同一个文件夹下</p>
+<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><p>phantomjs xss.js</p>
+<h3 id="XSS-Validator安装"><a href="#XSS-Validator安装" class="headerlink" title="XSS Validator安装"></a>XSS Validator安装</h3><p>在burpsuit的Extender模板下，找到BApp Store，搜索XSS Validator</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p><img src="/.io//study\blog\source\images\burp插件使用-xssValidator\image-20210711233818830.png" alt="image-20210711233818830"></p>
+<p><img src="/.io//study\blog\source\images\burp插件使用-xssValidator\image-20210711233753580.png" alt="image-20210711233753580"></p>
+<p><img src="/.io//study\blog\source\images\burp插件使用-xssValidator\image-20210711233918580.png" alt="image-20210711233918580"></p>
+<p><img src="/.io//study\blog\source\images\burp插件使用-xssValidator\image-20210711233950810.png" alt="image-20210711233950810"></p>
+<p><img src="/.io//study\blog\source\images\burp插件使用-xssValidator\image-20210711234039184.png" alt="image-20210711234039184"></p>
+<p><img src="/.io//study\blog\source\images\burp插件使用-xssValidator\image-20210711234109773-1626018070913.png" alt="image-20210711234109773"></p>
+<p><img src="/.io//study\blog\source\images\burp插件使用-xssValidator\image-20210711234159278.png" alt="image-20210711234159278"></p>
+<h3 id="看执行效果"><a href="#看执行效果" class="headerlink" title="看执行效果"></a>看执行效果</h3><p>我的burp不知道为啥，不会勾选，只能看cmd控制台，知道的请教一下</p>
+<p><img src="/.io//study\blog\source\images\burp插件使用-xssValidator\image-20210711234922048.png" alt="image-20210711234922048"></p>
+<p>出来的都是可以利用的语句</p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><blockquote>
+<p><a target="_blank" rel="noopener" href="http://127.0.0.1/pikachu/vul/xss/xss_reflected_get.php?message=%3Cscript%3Ealert(299792458)%3C/script%3E&amp;submit=submit">http://127.0.0.1/pikachu/vul/xss/xss_reflected_get.php?message=%3cscript%3ealert(299792458)%3c%2fscript%3e&amp;submit=submit</a></p>
+</blockquote>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://127.0.0.1/pikachu/vul/xss/xss_reflected_get.php?message=%3Cscript%3Econfirm(299792458)%3C/script%3E&amp;submit=submit">http://127.0.0.1/pikachu/vul/xss/xss_reflected_get.php?message=%3Cscript%3Econfirm(299792458)%3C%2fscript%3E&amp;submit=submit</a></p>
+</blockquote>
+<p><img src="/.io//study\blog\source\images\burp插件使用-xssValidator\image-20210711234951656.png" alt="image-20210711234951656"></p>
+<blockquote>
+<p><img src="/.io//study\blog\source\images\burp插件使用-xssValidator\image-20210711235037620.png" alt="image-20210711235037620"></p>
+</blockquote>
 
                 
             </div>
@@ -530,7 +496,7 @@ mysql&gt; select * from admin;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://ly8008love.github.io/2021/07/02/1-1-sql-ji-ben-yu-ju/">https://ly8008love.github.io/2021/07/02/1-1-sql-ji-ben-yu-ju/</a>
+                    <a href="https://ly8008love.github.io/2021/07/11/burp-cha-jian-shi-yong-xssvalidator/">https://ly8008love.github.io/2021/07/11/burp-cha-jian-shi-yong-xssvalidator/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -568,8 +534,8 @@ mysql&gt; select * from admin;
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/SQL%E6%B3%A8%E5%85%A5/">
-                                    <span class="chip bg-color">SQL注入</span>
+                                <a href="/tags/burp%E6%8F%92%E4%BB%B6/">
+                                    <span class="chip bg-color">burp插件</span>
                                 </a>
                             
                         </div>
@@ -885,13 +851,13 @@ mysql&gt; select * from admin;
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/07/03/hong-dui-zhong-yi-bei-gong-ji-de-yi-xie-chong-dian-xi-tong-lou-dong-zheng-li/">
+                <a href="/2021/07/12/test/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="红队中易被攻击的一些重点系统漏洞整理">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="test">
                         
-                        <span class="card-title">红队中易被攻击的一些重点系统漏洞整理</span>
+                        <span class="card-title">test</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -902,14 +868,14 @@ mysql&gt; select * from admin;
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-07-03
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-07-12
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%BA%A2%E9%98%9F/" class="post-category">
-                                    红队
+                            <a href="/categories/test/" class="post-category">
+                                    test
                                 </a>
                             
                             
@@ -919,8 +885,8 @@ mysql&gt; select * from admin;
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E8%B5%84%E6%96%99%E6%94%B6%E9%9B%86/">
-                        <span class="chip bg-color">资料收集</span>
+                    <a href="/tags/test/">
+                        <span class="chip bg-color">test</span>
                     </a>
                     
                 </div>
@@ -931,16 +897,16 @@ mysql&gt; select * from admin;
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/07/02/1-1-sql-ji-ben-yu-ju/">
+                <a href="/2021/07/08/nmap-jiao-ben-he-ji/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="1.1 SQL基本语句">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="nmap脚本合集">
                         
-                        <span class="card-title">1.1 SQL基本语句</span>
+                        <span class="card-title">nmap脚本合集</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -951,26 +917,25 @@ mysql&gt; select * from admin;
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-02
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-08
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/web%E5%89%8D%E7%AB%AF%E6%B5%8B%E8%AF%95/" class="post-category">
-                                    web前端测试
+                            <a href="/categories/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" class="post-category">
+                                    信息收集
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/SQL%E6%B3%A8%E5%85%A5/">
-                        <span class="chip bg-color">SQL注入</span>
+                    <a href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/">
+                        <span class="chip bg-color">工具使用</span>
                     </a>
                     
                 </div>

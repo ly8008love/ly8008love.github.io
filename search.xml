@@ -4,6 +4,81 @@
   
     
     <entry>
+      <title>2.md</title>
+      <link href="/2021/07/12/2-md/"/>
+      <url>/2021/07/12/2-md/</url>
+      
+        <content type="html"><![CDATA[<h1 id="14141"><a href="#14141" class="headerlink" title="14141"></a>14141</h1><p><img src="/../../images/2-md/image-20210712164242489.png" alt="image-20210712164242489"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> test </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> test </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>test</title>
+      <link href="/2021/07/12/test/"/>
+      <url>/2021/07/12/test/</url>
+      
+        <content type="html"><![CDATA[<h2 id="test"><a href="#test" class="headerlink" title="test"></a>test</h2><p>123141</p><p><img src="../images/image-20210712162918818.png" alt="image-20210712162918818"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> test </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> test </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>burp插件使用-xssValidator</title>
+      <link href="/2021/07/11/burp-cha-jian-shi-yong-xssvalidator/"/>
+      <url>/2021/07/11/burp-cha-jian-shi-yong-xssvalidator/</url>
+      
+        <content type="html"><![CDATA[<h1 id="XSS-Validator"><a href="#XSS-Validator" class="headerlink" title="XSS Validator"></a>XSS Validator</h1><h2 id="安装必备环境"><a href="#安装必备环境" class="headerlink" title="安装必备环境"></a>安装必备环境</h2><h3 id="Phantomjs"><a href="#Phantomjs" class="headerlink" title="Phantomjs"></a>Phantomjs</h3><blockquote><p><a href="http://phantomjs.org/download.html">http://phantomjs.org/download.html</a></p></blockquote><h3 id="xss-js"><a href="#xss-js" class="headerlink" title="xss.js"></a>xss.js</h3><blockquote><p><a href="https://github.com/nVisium/xssValidator">https://github.com/nVisium/xssValidator</a></p></blockquote><p>下载完成后，将xss.js放在phantomjs同一个文件夹下</p><h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><p>phantomjs xss.js</p><h3 id="XSS-Validator安装"><a href="#XSS-Validator安装" class="headerlink" title="XSS Validator安装"></a>XSS Validator安装</h3><p>在burpsuit的Extender模板下，找到BApp Store，搜索XSS Validator</p><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p><img src="/.io//study\blog\source\images\burp插件使用-xssValidator\image-20210711233818830.png" alt="image-20210711233818830"></p><p><img src="/.io//study\blog\source\images\burp插件使用-xssValidator\image-20210711233753580.png" alt="image-20210711233753580"></p><p><img src="/.io//study\blog\source\images\burp插件使用-xssValidator\image-20210711233918580.png" alt="image-20210711233918580"></p><p><img src="/.io//study\blog\source\images\burp插件使用-xssValidator\image-20210711233950810.png" alt="image-20210711233950810"></p><p><img src="/.io//study\blog\source\images\burp插件使用-xssValidator\image-20210711234039184.png" alt="image-20210711234039184"></p><p><img src="/.io//study\blog\source\images\burp插件使用-xssValidator\image-20210711234109773-1626018070913.png" alt="image-20210711234109773"></p><p><img src="/.io//study\blog\source\images\burp插件使用-xssValidator\image-20210711234159278.png" alt="image-20210711234159278"></p><h3 id="看执行效果"><a href="#看执行效果" class="headerlink" title="看执行效果"></a>看执行效果</h3><p>我的burp不知道为啥，不会勾选，只能看cmd控制台，知道的请教一下</p><p><img src="/.io//study\blog\source\images\burp插件使用-xssValidator\image-20210711234922048.png" alt="image-20210711234922048"></p><p>出来的都是可以利用的语句</p><h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><blockquote><p><a href="http://127.0.0.1/pikachu/vul/xss/xss_reflected_get.php?message=%3Cscript%3Ealert(299792458)%3C/script%3E&amp;submit=submit">http://127.0.0.1/pikachu/vul/xss/xss_reflected_get.php?message=%3cscript%3ealert(299792458)%3c%2fscript%3e&amp;submit=submit</a></p></blockquote><blockquote><p><a href="http://127.0.0.1/pikachu/vul/xss/xss_reflected_get.php?message=%3Cscript%3Econfirm(299792458)%3C/script%3E&amp;submit=submit">http://127.0.0.1/pikachu/vul/xss/xss_reflected_get.php?message=%3Cscript%3Econfirm(299792458)%3C%2fscript%3E&amp;submit=submit</a></p></blockquote><p><img src="/.io//study\blog\source\images\burp插件使用-xssValidator\image-20210711234951656.png" alt="image-20210711234951656"></p><blockquote><p><img src="/.io//study\blog\source\images\burp插件使用-xssValidator\image-20210711235037620.png" alt="image-20210711235037620"></p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具使用 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> burp插件 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>nmap脚本合集</title>
       <link href="/2021/07/08/nmap-jiao-ben-he-ji/"/>
       <url>/2021/07/08/nmap-jiao-ben-he-ji/</url>
